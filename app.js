@@ -13,7 +13,7 @@ $(function() {
     'height': H
   });
 
-  // create pie chart
+  // create g
   var arcs = svg.selectAll('.arc')
   .data(pie(dataset))
   .enter()
@@ -22,4 +22,10 @@ $(function() {
   .attr({
     'transform': 'translate(' + W/2 + ', '+ H/2 + ')'
   });
+  // create pie chart
+  var arc = d3.svg.arc()
+            .innerRadius(W/2)
+            .outerRadius(0);
+  arcs.append('path')
+  .attr('d', arc);
 });
