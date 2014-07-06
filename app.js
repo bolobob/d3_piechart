@@ -4,6 +4,7 @@ $(function() {
   var W = 300;
   var H = 300;
   var pie = d3.layout.pie();
+  var color = d3.scale.category20c();
 
   // append svg
   var svg = d3.select('body')
@@ -27,5 +28,8 @@ $(function() {
             .innerRadius(W/2)
             .outerRadius(0);
   arcs.append('path')
-  .attr('d', arc);
+  .attr('d', arc)
+  .attr('fill', function(d, i) {
+    return color(i);
+  });
 });
